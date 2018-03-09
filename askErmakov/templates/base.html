@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1">
 
-
-
     <title>{% block title %}{% endblock %} - AskErmakov</title>
 
     <!-- Bootstrap-->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 
@@ -19,65 +18,95 @@
 
 <body>
 
+    <nav class="navbar navbar-expand-md navbar-dark bg-light">
+        <div class="container">
+    	    <a class="logo-button" href="/"><b>AskErmakov</b></a>
+      	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      		    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        	    <span class="navbar-toggler-icon"></span>
+      	    </button>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-    	<a class="navbar-brand" href="/"><b>AskErmakov</b></a>
-      	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      		aria-controls="navbarSupportedContent" aria-expanded="	false" aria-label="Toggle navigation">
-        	<span class="navbar-toggler-icon"></span>
-      	</button>
+		    <div class="collapse navbar-collapse" style="align-self: center;" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-auto">
+				    <li class="nav-item my-auto">
+					    <form class="form-inline my-2 mx-5">
+						    <div class="input-group">
+							    <input type="text" class="form-control" placeholder="Search">
+							    <div class="input-group-append">
+								    <button class="btn btn-default" type="button">
+									    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+								    </button>
+							    </div>
+					    	</div>
+					    </form>
 
-		<div class="collapse navbar-collapse" style="align-self: center"; id="navbarSupportedContent">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item my-auto">
-					<form class="form-inline">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-							<div class="input-group-append">
-								<button class="btn btn-outline-success" type="button"></button>
-								<a class="btn btn-outline-info" href="#"></a>
-							</div>
-						</div>
-					</form>
-				</li>
+    				</li>
 
-				<li class="nav-item">
-					{% if current_user %}
-            		<div class="container">
-              			<div class="row">
-                			<div class="col">
-                  				<img src="/static/img/fachela.png" style="max-height: 80px;"
-                  					class="rounded float-right img-fluid" alt="...">
-                			</div>
-                			<div class="col-8">
-								<div class="h-25 h5">{{ current_user.login }}</div>
-								<div class="h-75">
-                    				<div class="btn-group" role="group">
-                      					<a href="#" class="btn btn-outline-info my-2 my-sm-0">Settings</a>
-										<a href="#" class="btn btn-outline-danger my-2 my-sm-0">Log out</a>
-                    				</div>
-                  				</div>
-                			</div>
-              			</div>
-            		</div>
-            		{% else %}
-            		<div class="container">
-              			<div class="row">
-                			<div class="col-8 offset-4">
-                  				<div class="btn-group" role="group">
-                    				<a href="#" class="btn btn-success my-2 my-sm-0">Log in</a>
-                    				<a href="#" class="btn btn-outline-success my-2 my-sm-0">Register</a>
-                  				</div>
-                			</div>
-              			</div>
-            		</div>
-					{% endif %}
-          		</li>
-			</ul>
-		</div>
-   	</div>
-</nav>
+	    			<li class="nav-item my-auto">
+		    			 <a href="#"><button class="btn btn-secondary" type="button">Ask!</button></a>
+			    	</li>
+
+				    <li class="nav-item my-auto">
+                        {% if current_user %}
+                		<div class="container">
+                  			<div class="row">
+                    			<div class="col-4">
+                      				<img src="/static/img/fachela.jpg" style="max-height: 80px;"
+                      					class="rounded float-right img-fluid" alt="...">
+                	    		</div>
+                		    	<div class="col-8">
+							    	<div class="h-55 h4">1234</div>
+
+								    <a href="#"><button type="button" class="btn btn-secondary btn-md">Settings</button></a>
+								    <a href="#"><button type="button" class="btn btn-danger btn-md">Log out:(</button></a>
+                    			</div>
+                  			</div>
+                		</div>
+                        {% else %}
+            	    	<div class="container">
+              		    	<div class="row">
+                		    	<div class="col-12 offset-4">
+							    	<a href="#"><button type="button" class="btn btn-secondary btn-md">Log in:)</button></a>
+								    <a href="#"><button type="button" class="btn btn-danger btn-md">Register</button></a>
+                			    </div>
+              			    </div>
+            		    </div>
+					    {% endif %}
+          		    </li>
+			    </ul>
+		    </div>
+   	    </div>
+    </nav>
+
+    <main role="main">
+        <div class="container">
+            <div class="row">
+                 <div class="col-md-9">
+                    {% block content %} {% endblock %}
+                 </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <h3>Popular tags</h3>
+                            {% for tag in popular_tags %}
+                                <a class="btn btn-outline-secondary mb-1" href="#">{{ tag }}</a>
+                            {% endfor %}
+                    </div>
+                    <div class="p-3">
+                        <h3>Best members</h3>
+                            {% for member in best_members %}
+                                <a class="btn btn-outline-secondary mb-1" href="#">{{ member }}</a>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
 
 </body>
 </html>
