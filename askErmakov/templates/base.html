@@ -43,7 +43,7 @@
     				</li>
 
 	    			<li class="nav-item my-auto">
-		    			 <a href="#"><button class="btn btn-secondary" type="button">Ask!</button></a>
+		    			 <a href="{% url 'ask' %}"><button class="btn btn-secondary" type="button">Ask!</button></a>
 			    	</li>
 
 				    <li class="nav-item my-auto">
@@ -57,7 +57,7 @@
                 		    	<div class="col-8">
 							    	<div class="h-55 h4">1234</div>
 
-								    <a href="#"><button type="button" class="btn btn-secondary btn-md">Settings</button></a>
+								    <a href="{% url 'settings' %}"><button type="button" class="btn btn-secondary btn-md">Settings</button></a>
 								    <a href="#"><button type="button" class="btn btn-danger btn-md">Log out:(</button></a>
                     			</div>
                   			</div>
@@ -66,8 +66,8 @@
             	    	<div class="container">
               		    	<div class="row">
                 		    	<div class="col-12 offset-4">
-							    	<a href="#"><button type="button" class="btn btn-secondary btn-md">Log in:)</button></a>
-								    <a href="#"><button type="button" class="btn btn-danger btn-md">Register</button></a>
+							    	<a href="{% url 'login' %}"><button type="button" class="btn btn-secondary btn-md">Log in:)</button></a>
+								    <a href="{% url 'register' %}"><button type="button" class="btn btn-danger btn-md">Register</button></a>
                 			    </div>
               			    </div>
             		    </div>
@@ -88,7 +88,7 @@
                     <div class="p-3">
                         <h3>Popular tags</h3>
                             {% for tag in popular_tags %}
-                                <a class="btn btn-outline-secondary mb-1" href="#">{{ tag }}</a>
+                                <a class="btn btn-outline-secondary mb-1" href="{% url 'tag' tag %}">{{ tag }}</a>
                             {% endfor %}
                     </div>
                     <div class="p-3">
@@ -100,6 +100,16 @@
                 </div>
             </div>
         </div>
+
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2018 Company Name</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+      </footer>
     </main>
 
 

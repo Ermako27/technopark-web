@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Questions index{% endblock %}
+
+{% block content %}
+    <h3 class="my-3">Tag: {{ tag }}</h3>
+    {% for q in questions %}
+        {% include "questions/all_question.html" %}
+    {% endfor %}
+
+{% endblock %}

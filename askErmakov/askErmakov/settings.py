@@ -74,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'askErmakov.wsgi.application'
 
 

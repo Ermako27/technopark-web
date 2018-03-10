@@ -1,37 +1,27 @@
+{% extends "base.html" %}
 
 
+{% block title %}{% endblock %}
 
-    <div class="card bg-light my-3 w-85">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="mx-4 d-flex">
-                        <img src="/static/img/fachela.jpg" style="max-height: 60px;"
-                             class="rounded float-right img-fluid" alt="...">
-                    </div>
-                    <div class="mx-1 p-3">
-                        <button type="button" class="btn btn-success btn-sm mx-1"><span class="glyphicons glyphicons-plus"></span>+</button>
-                        <button class="btn btn-secondary btn-disabled w-25 btn-sm mx-1" disabled>{{ q.rating }}</button>
-                        <button type="button" class="btn btn-danger btn-sm mx-1"><span class="glyphicons glyphicons-plus">-</span></button>
-                    </div>
+{% block content %}
 
-                </div>
+    {% include "questions/question_body.html" with q=question %}
 
-                <div class="col-md-8">
-                    <div>
+    <hr class="comment-list-delimiter">
+    <div class="comments-list">
+        {% for comment in comments %}
+            {% include "questions/comment.html" %}
+        {% endfor %}
 
-                        <a class="card-title logo-button h3" href="#">{{ q.title }}</a>
-                        <p class="card-text">{{ q.desc }}</p>
-                    </div>
-                    <div class="my-3">
-                        <a class="logo-button" href="#">Answer
-                            <span class="badge badge-secondary">{{ q.answers }}</span></a>
-                        <a class="mx-3 logo-button" href="#">Tags: {{ q.tags }}</a>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
     </div>
 
+    <hr class="comment-list-delimiter">
+
+    <form method="post" action="#">
+        <div class="form-group">
+            <textarea class="form-control" id="text" rows="3" placeholder="Enter your answer here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Answer</button>
+    </form>
+
+{% endblock %}

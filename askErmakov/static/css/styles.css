@@ -43,3 +43,12 @@ html {
 .navbar--right{
     float: right;
 }
+
+.comment-list-delimiter {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.comment-list {
+    margin-top: 1em;
+}
