@@ -10,9 +10,7 @@
     <!-- Bootstrap-->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
-
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
 
 </head>
 
@@ -47,15 +45,15 @@
 			    	</li>
 
 				    <li class="nav-item my-auto">
-                        {% if current_user %}
+                        {% if current_user.loged %}
                 		<div class="container">
                   			<div class="row">
                     			<div class="col-4">
-                      				<img src="/static/img/fachela.jpg" style="max-height: 80px;"
+                      				<img src="/static/img/smile.png" style="max-height: 80px;"
                       					class="rounded float-right img-fluid" alt="...">
                 	    		</div>
                 		    	<div class="col-8">
-							    	<div class="h-55 h4">1234</div>
+							    	<div class="h-55 h4">{{ current_user.login }}</div>
 
 								    <a href="{% url 'settings' %}"><button type="button" class="btn btn-secondary btn-md">Settings</button></a>
 								    <a href="#"><button type="button" class="btn btn-danger btn-md">Log out:(</button></a>
@@ -88,7 +86,7 @@
                     <div class="p-3">
                         <h3>Popular tags</h3>
                             {% for tag in popular_tags %}
-                                <a class="btn btn-outline-secondary mb-1" href="{% url 'tag' tag %}">{{ tag }}</a>
+                                <a class="btn btn-outline-secondary mb-1" href="{% url 'tag'  %}">{{ tag }}</a>
                             {% endfor %}
                     </div>
                     <div class="p-3">

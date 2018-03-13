@@ -4,11 +4,13 @@ from . import views
 
 urlpatterns = [
     path('', views.questions, name='questions'),
+    path('questions/<int:page_number>', views.questions, name='questions'),
     path('ask/', views.ask, name='ask'),
-    path('question/<title>/<text>', views.one_question_page, name='one_question_page'),
-    path('tag/<tag>/', views.tag, name='tag'),
-    path('hot/', views.very_hot, name='hot')
-    #path('hot/'),
-    #path('question/'),
+    path('question/', views.one_question_page, name='one_question_page'),
+    path('question/<int:page_number>', views.one_question_page, name='one_question_page'),
+    path('tag/', views.tag, name='tag'),
+    path('tag/<int:page_number>', views.tag, name='tag'),
+    path('hot/', views.hot, name='hot'),
+    path('hot/<int:page_number>', views.hot, name='hot')
 
 ]

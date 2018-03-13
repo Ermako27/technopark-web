@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'questions'
+    'questions',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,8 @@ TEMPLATES = [
 
 
                 'questions.fish.popular_tags',
-                'questions.fish.best_members'
+                'questions.fish.best_members',
+                'users.fish.current_user'
             ],
         },
     },
