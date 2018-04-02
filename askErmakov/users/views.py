@@ -1,14 +1,37 @@
 from django.shortcuts import render
+from questions.models import Tag, Question, Answer
+from users.models import Profile
+
+# TODO сделать обратботку ошибок: проверка совпадения паролей
+
+
+def _sidebar_context(request):
+    return {
+        'popular_tags': Tag.objects.most_popular(),
+        'best_members': Profile.objects.best_members(),
+    }
 
 
 # Create your views here.
 def register(request):
-    return render(request, 'users/register.html', {'title': 'Registration'})
+    context = {
+        'title': 'Registration'
+    }
+    context.update(_sidebar_context(request))
+    return render(request, 'users/register.html', context)
 
 
 def login(request):
-    return render(request, 'users/login.html', {'title': 'Login'})
+    context = {
+        'title': 'Login'
+    }
+    context.update(_sidebar_context(request))
+    return render(request, 'users/login.html', context)
 
 
 def settings(request):
-    return render(request, 'users/settings.html')
+    context = {
+        'title': 'Settings'
+    }
+    context.update(_sidebar_context(request))
+    return render(request, 'users/settings.html', context)

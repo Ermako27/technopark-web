@@ -18,15 +18,15 @@
                     <div>
 
                         <a class="card-title ml-1 logo-button h3" href="#">{{ q.title }}</a>
-                        <p class="card-text ml-1">{{ q.desc }}</p>
+                        <p class="card-text ml-1">{{ q.text }}</p>
                     </div>
                     <div class="ml-1 my-3 row">
                         <a class="logo-button" href="#">Answer
                             <span class="badge badge-secondary">{{ q.answers }}</span></a>
                         <div class="ml-3 row">
                             <p class="logo-button">Tags: </p>
-                            {% for tag in q.tags%}
-                                <a class="mx-3 logo-button" href="#">{{ tag }}</a>
+                            {% for tag in q.tags.all%}
+                                <a class="mx-3 logo-button" href="#">{{ tag.name }}</a>
                             {% endfor %}
                         </div>
                     </div>

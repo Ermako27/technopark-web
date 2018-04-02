@@ -10,7 +10,7 @@
                              class="rounded float-right img-fluid" alt="...">
                     </div>
                     <div class="mx-1 p-3">
-                        <button type="button" class="btn btn-success btn-sm mx-1"><span class="glyphicons glyphicons-plus"></span>+</button>
+                        <button type="button" class="btn btn-success btn-sm mx-1"><span class="glyphicons glyphicons-plus">+</span></button>
                         <button class="btn btn-secondary btn-disabled w-25 btn-sm mx-1" disabled>{{ q.rating }}</button>
                         <button type="button" class="btn btn-danger btn-sm mx-1"><span class="glyphicons glyphicons-plus">-</span></button>
                     </div>
@@ -19,17 +19,16 @@
 
                 <div class="col-md-8">
                     <div>
-
-                        <a class="card-title ml-1 logo-button h3" href="{% url 'one_question_page' %}">{{ q.title }}</a>
-                        <p class="card-text ml-1">{{ q.desc }}</p>
+                        <a class="card-title ml-1 logo-button h3" href="{% url 'one_question_page' q.id %}">{{ q.title }}</a>
+                        <p class="card-text ml-1">{{ q.text }}</p>
                     </div>
                     <div class="ml-1 my-3 row">
                         <a class="logo-button" href="#">Answer
-                            <span class="badge badge-secondary">{{ q.answers }}</span></a>
+                            <span class="badge badge-secondary">{{ q.answer_set.count }}</span></a>
                         <div class="ml-3 row">
                             <p class="logo-button">Tags: </p>
-                            {% for tag in q.tags%}
-                                <a class="mx-3 logo-button" href="#">{{ tag }}</a>
+                            {% for tag in q.tags.all%}
+                                <a class="mx-3 logo-button" href="#">{{ tag.name }}</a>
                             {% endfor %}
                         </div>
                     </div>
