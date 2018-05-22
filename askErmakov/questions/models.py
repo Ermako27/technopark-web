@@ -9,7 +9,7 @@ class QuestionManager(models.Manager):
         return self.order_by('-rating').all()
 
     def all_questions_by_tag(self, tag_name):
-        return self.filter(tags=tag_name).all()
+        return self.filter(tags__name=tag_name).all()
 
 
 class AnswerManager(models.Manager):
@@ -30,10 +30,10 @@ class TagManager(models.Manager):
     def most_popular(self):
         return self.order_by_question_count().all()[:5]
 
+
 class Tag(models.Model):
     objects = TagManager()
     name = models.CharField(max_length=30)
-
 
 
 class Question(models.Model):
@@ -55,6 +55,30 @@ class Answer(models.Model):
     correct = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)
 
+
+class QuestionLikeManager(models.Manager):
+    def like(self, id, user):
+        compose_key = str(user) + str(id)
+        question = Question.objects.get(pk=id)
+        try:
+            qLike = QuestionLike.objects.get(compose_key=compose_key)
+        except QuestionLike.DoesNotExist:
+            qLike = QuestionLike.objects.create(compose_key=compose_key)
+            qLike.question = question
+            user.profile.questionlikes.add(qLike)
+            user.profile.save()
+            question.save()
+            question.user.profile.save()
+            qLike.save()
+        return qLike
+
+
+class QuestionLike(models.Model):
+    value = models.IntegerField(default=0)
+    question = models.ForeignKey(Question, default=0, on_delete=models.CASCADE)
+    compose_key = models.CharField(max_length=70, unique=True, default='None')
+    is_liked = models.BooleanField(default=False)
+    objects = QuestionLikeManager()
 
 
 

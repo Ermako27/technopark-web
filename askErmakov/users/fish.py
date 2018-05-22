@@ -3,6 +3,6 @@ def current_user(request):
         current_user=dict(
             login='Maxim Ermakov',
             id=1,
-            loged=0
+            loged=1
         ),
     )

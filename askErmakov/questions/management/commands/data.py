@@ -12,7 +12,11 @@ class Command(BaseCommand):
         self.fill_questions()
         self.fill_answers()
         self.fill_tags_questions()
-
+    #     self.add_users()
+    #
+    #
+    # def add_users(self):
+    #     names =
 
     def fill_questions(self):
         fake = Factory.create()
