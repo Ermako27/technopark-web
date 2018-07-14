@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    {% include "questions/question_body.html" with q=question %}
+
+    <hr class="comment-list-delimiter">
+    <div class="comments-list">
+        {% for comment in comments %}
+            {% include "questions/comment.html" %}
+        {% endfor %}
+
+    </div>
+
+    {% include "pagination.html" with object_list=comments %}
+
+    <hr class="comment-list-delimiter">
+
+    <form method="post" action="#">
+        <div class="form-group">
+            <textarea class="form-control" id="text" rows="3" placeholder="Enter your answer here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Answer</button>
+    </form>
+
+{% endblock %}

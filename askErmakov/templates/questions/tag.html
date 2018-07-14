@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+    <h3 class="my-3">Tag: {{ tag.name }}</h3>
+    {% for q in questions %}
+        {% include "questions/all_question.html" %}
+    {% endfor %}
+
+    {% include "pagination.html" with object_list=questions %}
+
+{% endblock %}

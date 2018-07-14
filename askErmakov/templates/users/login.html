@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+<h3 class="my-3">Log In</h3>
+<form method="post">
+    <div class="form-row">
+        <label for="login" class="col-md-2 col-form-label my-4">Login</label>
+        <div class="col-md-10 my-4">
+            <input type="text" class="form-control" placeholder="Login" required>
+            <small class="form-text text-muted">From 4 to 16 symbols length.</small>
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="Password" class="col-md-2 col-form-label my-4">Password</label>
+        <div class="col-md-10 my-4">
+            <input type="password" class="form-control" placeholder="Password" required>
+            <small class="form-text text-muted">From 6 to 18 characters</small>
+        </div>
+    </div>
+
+    <div class="row justify-content-start my-4">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success w-100">Log in</button>
+        </div>
+        <div class="col-md-10">
+            <a class="btn btn-outline-secondary mb-1" href="{% url 'register' %}">Create a new account</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

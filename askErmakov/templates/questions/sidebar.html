@@ -1,0 +1,12 @@
+                    <div class="p-3">
+                        <h3>Popular tags</h3>
+                            {% for t in popular_tags %}
+                                <a class="btn btn-outline-secondary mb-1" href="{% url 'tag' t.name %}">{{ t.name }}</a>
+                            {% endfor %}
+                    </div>
+                    <div class="p-3">
+                        <h3>Best members</h3>
+                            {% for member in best_members %}
+                                <a class="btn btn-outline-secondary mb-1" href="#">{{ member }}</a>
+                            {% endfor %}
+                    </div>
